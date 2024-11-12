@@ -84,12 +84,15 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][NUM_DIRECTIONS] = {
 };
 #endif
 
+
+
 bool is_reset_mode = false;  // Track if reset mode is active
 uint16_t reset_timer;        // Timer for tracking hold duration
 
 // Process custom keycodes
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
+        
         case RESET_FACTORY:
             if (record->event.pressed) {
                 is_reset_mode = true;
@@ -130,6 +133,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
     }
     return true;  // Process all other keycodes as usual
+}
+
+
+bool process_record_kb(uint16_t keycode, keyrecord_t* record) {
+    if (!process_record_user(keycode, record)) {
+        return false;
+    }
+    switch (keycode) {
+        case DF(WIN_BASE):
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(WIN_BASE);
+            }
+            return false;
+        case DF(MAC_BASE):
+            if (record->event.pressed) {
+                set_single_persistent_default_layer(MAC_BASE);
+            }
+            return false;
+        default:
+            return true;
+    }
 }
 
 // Scan function to handle factory reset timing
