@@ -4,15 +4,7 @@
     "maintainer": "kerlos",
     "bootloader": "wb32-dfu",
     "bootmagic": {
-        "enabled": true,
         "matrix": [0, 0]
-    },
-    "eeprom": {
-        "driver": "wear_leveling",
-        "wear_leveling": {
-            "backing_size": 4096,
-            "driver": "spi_flash"
-        }
     },
     "features": {
         "bootmagic": true,
