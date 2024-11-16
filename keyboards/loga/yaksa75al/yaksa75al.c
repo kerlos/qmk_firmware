@@ -377,82 +377,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-void im_rgblight_increase(void) {
-    HSV rgb;
-    uint8_t moude;
-    static uint8_t mode = 0;
-
-    moude = rgblight_get_mode();
-    if (moude == 1) {
-        rgb = rgblight_get_hsv();
-        if (rgb.h == 0 && rgb.s != 0)
-            mode = 3;
-        else
-            mode = 9;
-        switch (rgb.h) {
-            case 40: {
-                mode = 4;
-            } break;
-            case 80: {
-                mode = 5;
-            } break;
-            case 120: {
-                mode = 6;
-            } break;
-            case 160: {
-                mode = 7;
-            } break;
-            case 200: {
-                mode = 8;
-            } break;
-            default:
-                break;
-        }
-    }
-
-    mode++;
-    if (mode == 11) mode = 0;
-    if (mode == 10) {
-        rgb = rgblight_get_hsv();
-        rgblight_sethsv(0, 255, rgb.v);
-        rgblight_disable();
-    } else {
-        rgblight_enable();
-        rgblight_mode(buff[mode]);
-    }
-
-    rgb = rgblight_get_hsv();
-    switch (mode) {
-        case 3: {
-            rgblight_sethsv(0, 255, rgb.v);
-        } break;
-        case 4: {
-            rgblight_sethsv(40, 255, rgb.v);
-        } break;
-        case 5: {
-            rgblight_sethsv(80, 255, rgb.v);
-        } break;
-        case 6: {
-            rgblight_sethsv(120, 255, rgb.v);
-        } break;
-        case 7: {
-            rgblight_sethsv(160, 255, rgb.v);
-        } break;
-        case 8: {
-            rgblight_sethsv(200, 255, rgb.v);
-        } break;
-        case 9: {
-            rgblight_sethsv(0, 0, rgb.v);
-        } break;
-        case 0: {
-            rgblight_set_speed(255);
-        } break;
-        default: {
-            rgblight_set_speed(200);
-        } break;
-    }
-}
-
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 
     if (process_record_user(keycode, record) != true) {
@@ -471,35 +395,6 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
                 eeconfig_disable();
                 bootloader_jump();
             }
-        } break;
-
-        case BT_TEST: {
-            if (record->event.pressed) {
-                md_send_devctrl(0x62);
-            }
-            return false;
-        } break;
-        case KC_TEST: {
-            if (rgbrec_is_started()) {
-
-                return false;
-            }
-            if (record->event.pressed) {
-                test_white_light_flag = true;
-            }
-
-            return false;
-        } break;
-        case RL_MOD: {
-            if (rgbrec_is_started()) {
-
-                return false;
-            }
-            if (record->event.pressed) {
-                im_rgblight_increase();
-            }
-
-            return false;
         } break;
         case EE_CLR: {
             if (record->event.pressed) {
@@ -1075,10 +970,10 @@ bool rgb_matrix_indicators_advanced_kb(uint8_t led_min, uint8_t led_max) {
     else
         rgb_matrix_set_color(HS_RGB_INDEX_WIN_LOCK, RGB_BLACK);
 
-    if (rgb_matrix_indicators_advanced_rgblight(led_min, led_max) != true) {
+    // if (rgb_matrix_indicators_advanced_rgblight(led_min, led_max) != true) {
 
-        return false;
-    }
+    //     return false;
+    // }
 
 #ifdef WIRELESS_ENABLE
     rgb_matrix_wls_indicator();
@@ -1111,11 +1006,11 @@ void hs_reset_settings(void) {
     eeconfig_init();
     eeconfig_update_rgb_matrix_default();
 
-    extern void rgblight_init(void);
-    is_rgblight_initialized = false;
-    rgblight_init();
-    eeconfig_update_rgblight_default();
-    rgblight_enable();
+    // extern void rgblight_init(void);
+    // is_rgblight_initialized = false;
+    // rgblight_init();
+    // eeconfig_update_rgblight_default();
+    // rgblight_enable();
 
     keymap_config.raw = eeconfig_read_keymap();
 
