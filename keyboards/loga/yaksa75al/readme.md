@@ -6,8 +6,6 @@
 
 The YAKSA Whale 75 is a 75% keyboard designed by
 
-*A short description of the keyboard/project*
-
 * Keyboard Maintainer: [keRLos](https://github.com/kerlos)
 * Hardware Availability: [LOGA](https://logaworld.com)
 
