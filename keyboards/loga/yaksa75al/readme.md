@@ -4,7 +4,7 @@
 :-------------------------:|:-------------------------:
 ![Amateratsu](https://i.imgur.com/Pipn91o.jpeg) | ![Tsukuyomi](https://i.imgur.com/nifm9Ga.jpeg)
 
-The YAKSA Whale 75 is a 75% keyboard designed by
+Yaksa 75 Aluminium is a 75% keyboard designed by LOGA
 
 * Keyboard Maintainer: [keRLos](https://github.com/kerlos)
 * Hardware Availability: [LOGA](https://logaworld.com)
