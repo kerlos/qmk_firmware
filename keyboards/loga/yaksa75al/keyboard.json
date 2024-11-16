@@ -6,13 +6,6 @@
     "bootmagic": {
         "matrix": [0, 0]
     },
-    "eeprom": {
-        "driver": "wear_leveling",
-        "wear_leveling": {
-            "backing_size": 4096,
-            "driver": "spi_flash"
-        }
-    },
     "features": {
         "bootmagic": true,
         "command": false,
