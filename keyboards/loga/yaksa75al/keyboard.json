@@ -3,9 +3,6 @@
     "keyboard_name": "Yaksa75 AL",
     "maintainer": "kerlos",
     "bootloader": "wb32-dfu",
-    "bootmagic": {
-        "matrix": [0, 0]
-    },
     "features": {
         "bootmagic": true,
         "command": false,
@@ -17,6 +14,7 @@
         "deferred_exec": true,
         "encoder": true
     },
+    "debounce": 1,
     "diode_direction": "ROW2COL",
     "encoder": {
         "rotary": [
@@ -44,28 +42,10 @@
             "key": "KC_2G4"
         },
         {
-            "key": "RP_P0"
-        },
-        {
-            "key": "RP_P1"
-        },
-        {
-            "key": "RP_P2"
-        },
-        {
-            "key": "RP_END"
-        },
-        {
-            "key": "RL_MOD"
+            "key": "CHK_BAT"
         },
         {
             "key": "HS_BATQ"
-        },
-        {
-            "key": "KC_TEST"
-        },
-        {
-            "key": "BT_TEST"
         }
     ],
     "processor": "WB32FQ95",
